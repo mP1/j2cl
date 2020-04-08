@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.vertispan.j2cl</groupId>
+  <groupId>walkingkooka</groupId>
   <artifactId>j2cl-parent</artifactId>
-  <version>0.8-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -23,7 +23,7 @@
     <module>ast</module>
     <module>ast-annotations</module>
     <module>ast-annotations-internal</module>
-    <!--<module>ast-processors</module>-->
+    <module>ast-processors</module>
     <module>ast-processors-common</module>
     <module>ast-visitors</module>
 
@@ -41,14 +41,18 @@
     <module>minifier</module>
 
     <module>gwt-internal-annotations</module>
-    <module>jre</module>
+    <module>jre/java-pom.xml</module>
+    <module>jre/javascript-pom.xml</module>
 
     <module>bootstrap</module>
 
     <module>javac-bootstrap-classpath</module>
 
-    <module>junit/emul</module>
-    <module>junit/gwttestcase</module>
+    <module>junit/emul/java-pom.xml</module>
+    <module>junit/emul/javascript-pom.xml</module>
+
+    <!--<module>junit/gwttestcase</module>-->
+
     <module>junit/closure-test</module>
     <module>junit/annotations</module>
     <module>junit/async</module>
@@ -56,6 +60,7 @@
     <module>junit/processor</module>
   </modules>
 
+  <!--
   <distributionManagement>
     <repository>
       <id>vertispan-releases</id>
@@ -67,6 +72,15 @@
       <name>Vertispan hosted artifacts-snapshots</name>
       <url>https://repo.vertispan.com/j2cl</url>
     </snapshotRepository>
+  </distributionManagement>
+  -->
+
+  <distributionManagement>
+    <repository>
+      <id>github-mp1-appengine-repo</id>
+      <name>github.com/mP1 repository</name>
+      <url>https://maven-repo-254709.appspot.com</url>
+    </repository>
   </distributionManagement>
 
   <build>
@@ -181,12 +195,12 @@
       <dependency>
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity-engine-core</artifactId>
-        <version>2.1</version>
+        <version>2.2</version>
       </dependency>
       <dependency>
-        <groupId>com.vertispan.j2cl.external</groupId>
+        <groupId>walkingkooka-j2cl</groupId>
         <artifactId>org.eclipse.jdt.core</artifactId>
-        <version>${project.version}</version>
+        <version>1.0-SNAPSHOT</version>
       </dependency>
 
       <dependency>
@@ -217,7 +231,7 @@
       <dependency>
         <groupId>com.google.jsinterop</groupId>
         <artifactId>jsinterop-annotations</artifactId>
-        <version>1.0.2</version>
+        <version>2.0.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

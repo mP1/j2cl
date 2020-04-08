@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.vertispan.j2cl</groupId>
+    <groupId>walkingkooka</groupId>
     <artifactId>j2cl-parent</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>jre</artifactId>
+  <artifactId>j2cl-jre-java</artifactId>
   <packaging>pom</packaging>
 
   <build>
@@ -36,11 +36,13 @@
                   <type>jar</type>
                   <classifier>sources</classifier>
                 </artifact>
+                <!-- @see ./javascript-pom.xml
                 <artifact>
                   <file>../../bazel-bin/jre/java/jre.js.zip</file>
                   <type>zip</type>
                   <classifier>jszip</classifier>
                 </artifact>
+                -->
               </artifacts>
             </configuration>
           </execution>
@@ -49,17 +51,23 @@
     </plugins>
   </build>
   <dependencies>
+
     <dependency>
-      <groupId>com.google.jsinterop</groupId>
-      <artifactId>jsinterop-annotations</artifactId>
-      <version>2.0.0</version>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-javac-bootstrap-classpath</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
-      <!-- may not be required here, but has to be lumped in to the j2cl bytecode classpath -->
     <dependency>
-      <groupId>com.vertispan.j2cl</groupId>
-      <artifactId>gwt-internal-annotations</artifactId>
-      <version>${project.version}</version>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-jre-javascript</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>jsinterop-base</artifactId>
+      <version>1.0-SNAPSHOT</version>
     </dependency>
 
   </dependencies>

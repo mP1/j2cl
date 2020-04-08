@@ -10,8 +10,24 @@
     <version>1.0-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <artifactId>j2cl-gwttestcase</artifactId>
+  <artifactId>j2cl-junit-javascript</artifactId>
   <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-closure-test</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>zip</type>
+      <classifier>jszip</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-jre-javascript</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -29,13 +45,9 @@
             <configuration>
               <artifacts>
                 <artifact>
-                  <file>../../../bazel-bin/jre/javatests/com/google/gwt/junit/libgwttestcase_emul.jar</file>
+                  <file>../../../bazel-bin/junit/emul/java/libjunit_emul-src.jar</file>
                   <type>jar</type>
-                </artifact>
-                <artifact>
-                  <file>../../../bazel-bin/jre/javatests/com/google/gwt/junit/libgwttestcase_emul-src.jar</file>
-                  <type>jar</type>
-                  <classifier>sources</classifier>
+<!--                  <classifier>sources</classifier>-->
                 </artifact>
               </artifacts>
             </configuration>
@@ -44,17 +56,4 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>walkingkooka</groupId>
-      <artifactId>j2cl-junit</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>walkingkooka</groupId>
-      <artifactId>j2cl-junit</artifactId>
-      <version>1.0-SNAPSHOT</version>
-      <classifier>sources</classifier>
-    </dependency>
-  </dependencies>
 </project>

@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.vertispan.j2cl</groupId>
+        <groupId>walkingkooka</groupId>
         <artifactId>j2cl-parent</artifactId>
-        <version>0.8-SNAPSHOT</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>javac-bootstrap-classpath</artifactId>
+    <artifactId>j2cl-javac-bootstrap-classpath</artifactId>
     <packaging>pom</packaging>
 
     <build>
@@ -46,9 +46,9 @@
     <dependencies>
         <!-- may not be required here, but has to be lumped in to the j2cl bytecode classpath -->
         <dependency>
-            <groupId>com.vertispan.j2cl</groupId>
-            <artifactId>gwt-internal-annotations</artifactId>
-            <version>${project.version}</version>
+            <groupId>walkingkooka</groupId>
+            <artifactId>j2cl-gwt-internal-annotations</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

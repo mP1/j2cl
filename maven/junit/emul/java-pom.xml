@@ -5,17 +5,37 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.vertispan.j2cl</groupId>
+    <groupId>walkingkooka</groupId>
     <artifactId>j2cl-parent</artifactId>
-    <version>0.8-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <relativePath>../../pom.xml</relativePath>
   </parent>
-  <artifactId>junit-emul</artifactId>
+  <artifactId>j2cl-junit-java</artifactId>
   <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-junit-annotations</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-junit-processor</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>walkingkooka</groupId>
+      <artifactId>j2cl-jre-java</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
-      <!-- add a .walkingkooka-j2cl-maven-plugin-classpath-required.txt to the bazel built jar file -->
+      <!-- add a .walkingkooka-j2cl-maven-plugin-classpath-required.txt & .walkingkooka-j2cl-maven-plugin-ignored-dependency.txt to the bazel built jar file -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -29,14 +49,16 @@
             </goals>
             <configuration>
               <target>
-                <touch file=".maven-temp/emul/java-pom/.walkingkooka-j2cl-maven-plugin-classpath-required.txt"/>
+                <mkdir dir=".maven-temp"/>
+                <touch file=".maven-temp/.walkingkooka-j2cl-maven-plugin-classpath-required.txt"/>
+                <touch file=".maven-temp/.walkingkooka-j2cl-maven-plugin-ignored-dependency.txt"/>
 
                 <!-- make the file writable, bazel sets the jar to read only -->
                 <chmod file="../../../bazel-bin/junit/emul/java/libjunit_emul.jar" perm="666" type="file"/>
 
                 <!-- add the classpath-required file to the jar file-->
-                <zip basedir=".maven-temp/emul/java-pom/"
-                     includesfile=".maven-temp/emul/java-pom/.walkingkooka-j2cl-maven-plugin-classpath-required.txt"
+                <zip basedir=".maven-temp/"
+                     includes="*.txt"
                      update="true"
                      destfile="../../../bazel-bin/junit/emul/java/libjunit_emul.jar"/>
               </target>

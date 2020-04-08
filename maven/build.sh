@@ -13,7 +13,7 @@ ${BAZEL} build //jre/java/javaemul/internal/vmbootstrap/primitives:primitives
 ${BAZEL} build //jre/java:*
 
 ${BAZEL} build //junit/emul/java:*
-${BAZEL} build //jre/javatests/com/google/gwt/junit:*
+# ${BAZEL} build //jre/javatests/com/google/gwt/junit:*
 ${BAZEL} build  //junit/generator/java/com/google/j2cl/junit/async:*
 ${BAZEL} build //junit/generator/java/com/google/j2cl/junit/apt:*
 
