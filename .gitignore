@@ -40,3 +40,7 @@ out/
 
 # osx stuff
 .DS_Store
+
+/maven/**/.maven-temp
+
+

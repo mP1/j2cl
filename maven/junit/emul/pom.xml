@@ -15,6 +15,37 @@
 
   <build>
     <plugins>
+      <!-- add a .walkingkooka-j2cl-maven-plugin-classpath-required.txt to the bazel built jar file -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>repack</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <touch file=".maven-temp/emul/java-pom/.walkingkooka-j2cl-maven-plugin-classpath-required.txt"/>
+
+                <!-- make the file writable, bazel sets the jar to read only -->
+                <chmod file="../../../bazel-bin/junit/emul/java/libjunit_emul.jar" perm="666" type="file"/>
+
+                <!-- add the classpath-required file to the jar file-->
+                <zip basedir=".maven-temp/emul/java-pom/"
+                     includesfile=".maven-temp/emul/java-pom/.walkingkooka-j2cl-maven-plugin-classpath-required.txt"
+                     update="true"
+                     destfile="../../../bazel-bin/junit/emul/java/libjunit_emul.jar"/>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- create a maven jar from the bazel jar -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
