@@ -44,7 +44,7 @@ import org.eclipse.jdt.core.dom.ImportDeclaration;
  * A helper to comment out source code elements annotated with @GwtIncompatible so that they are
  * ignored by tools taking that source as input such as the java compile or the j2cl transpile.
  */
-final class GwtIncompatibleStripper {
+public final class GwtIncompatibleStripper {
 
   static Problems strip(List<String> files, String outputPath) {
     try {
@@ -68,7 +68,7 @@ final class GwtIncompatibleStripper {
   }
 
   /** Preprocess all provided files and put them to provided output path. */
-  private static void preprocessFiles(List<FileInfo> fileInfos, Path output, Problems problems) {
+  public static void preprocessFiles(List<FileInfo> fileInfos, Path output, Problems problems) {
     for (FileInfo fileInfo : fileInfos) {
       String processedFileContent;
       try {
